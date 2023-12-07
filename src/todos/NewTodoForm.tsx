@@ -1,30 +1,31 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { createTodo } from "./actions";
+import { createTodo } from './actions';
 import './NewTodoForm.css';
-import {Todo} from "./TodoList";
 
-const NewTodoForm = ({ todos , onCreatePressed } : {todos: Todo[], onCreatePressed: any}) => {
+const NewTodoForm = ({ todos, onCreatePressed } : {
+    todos: any[], onCreatePressed: any
+}) => {
     const [inputValue, setInputValue] = useState('');
+
     return (
         <div className="new-todo-form">
-            <input 
-                className="new-todo-input" 
-                type="text" 
+            <input
+                className="new-todo-input"
+                type="text"
                 placeholder="Type your new todo here"
                 value={inputValue}
-                onChange={e => setInputValue(e.target.value)}
-            />
+                onChange={e => setInputValue(e.target.value)} />
             <button
                 onClick={() => {
-                    const isDuplicateText = todos.some((todo: any) => todo.text === inputValue);
+                    const isDuplicateText =
+                        todos.some(todo => todo.text === inputValue);
                     if (!isDuplicateText) {
                         onCreatePressed(inputValue);
-                        setInputValue('')
+                        setInputValue('');
                     }
                 }}
-                className="new-todo-button"
-            >
+                className="new-todo-button">
                 Create Todo
             </button>
         </div>
@@ -36,7 +37,7 @@ const mapStateToProps = (state: any) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-    onCreatePressed: (text: string) => dispatch(createTodo(text)),
+    onCreatePressed: (text: any) => dispatch(createTodo(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTodoForm);
