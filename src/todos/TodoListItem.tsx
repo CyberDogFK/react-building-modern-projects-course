@@ -1,7 +1,8 @@
 import React from 'react';
 import './TodoListItem.css';
+import {Todo} from "./TodoList";
 
-const TodoListItem = ({ todo }) => (
+const TodoListItem = ({ todo }: {todo: Todo}) => (
     <div className="todo-item-container">
         <h3>{todo.text}</h3>
         <div className="buttons-container">

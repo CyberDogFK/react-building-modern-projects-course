@@ -3,11 +3,16 @@ import NewTodoForm from "./NewtodoForm";
 import TodoListItem from './TodoListItem';
 import './TodoList.css';
 
-const TodoList = ({ todos = [{ text: 'Hello'}] }) => (
+export class Todo {
+    constructor(public text: string) {
+    }
+}
+
+const TodoList = ({ todos = [new Todo('Hello')] }) => (
     <div className="list-wrapper">
         <NewTodoForm/>
         {
-            todos.map(todo => <TodoListItem todo={todo}/>)
+            todos.map((todo: Todo) => <TodoListItem todo={todo}/>)
         }
     </div>
 )

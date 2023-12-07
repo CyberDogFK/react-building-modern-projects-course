@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { createTodo } from "./actions";
 import './NewTodoForm.css';
+import {Todo} from "./TodoList";
 
-const NewTodoForm = ({ todos, onCreatePressed }) => {
+const NewTodoForm = ({ todos , onCreatePressed } : {todos: Todo[], onCreatePressed: any}) => {
     const [inputValue, setInputValue] = useState('');
     return (
         <div className="new-todo-form">
