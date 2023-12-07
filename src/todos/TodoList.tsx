@@ -4,11 +4,15 @@ import TodoListItem from './TodoListItem';
 import './TodoList.css';
 
 export class Todo {
-    constructor(public text: string) {
+    text: string;
+    isCompleted: boolean;
+    constructor(text: string, isCompleted: boolean) {
+        this.text = text;
+        this.isCompleted = isCompleted;
     }
 }
 
-const TodoList = ({ todos = [new Todo('Hello')] }) => (
+const TodoList = ({ todos = [new Todo('Hello', false)] }) => (
     <div className="list-wrapper">
         <NewTodoForm/>
         {
